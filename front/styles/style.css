@@ -1,0 +1,53 @@
+@font-face {
+    font-family: "Protesta";
+    src: url("../pages/fonts/ShantellSans-VariableFont_BNCE\,INFM\,SPAC\,wght.ttf") format("truetype");
+    src: url("../pages/fonts/ShantellSans-Italic-VariableFont_BNCE\,INFM\,SPAC\,wght.ttf") format("truetype");
+    src: url("../pages/fonts/static/ShantellSans-Medium.ttf") format("truetype");
+    font-style: normal;
+    font-weight: 400;
+}
+body{
+    font-family: "Protesta";
+    color: beige;
+    background-image: url("../pages/images/4.jpg") ;
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    position: relative;
+}
+ul {
+    display: flex;
+    justify-content: space-around;
+    align-items: center;
+    list-style-type: none;
+}
+li a {
+    text-decoration: none;
+    color: beige;
+    font-size: 20px;
+    margin: 6px;
+    padding: 6px;
+    border-radius: 10px;
+}
+li a img {
+    
+    width: 65px;
+}
+section{ 
+    display: flex;
+    margin: 15px;
+    padding: 6px;
+}
+
+.container-tarjetas{ 
+    display: flex;
+    justify-content: space-around;
+}
+.card{ 
+    display: flex;
+    justify-content: space-around;
+}
+#div-card{ 
+    display: flex;
+    justify-content: space-around;
+}
