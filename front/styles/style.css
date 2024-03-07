@@ -1,26 +1,43 @@
+/* Definición de fuentes */
 @font-face {
     font-family: "Protesta";
-    src: url("../pages/fonts/ShantellSans-VariableFont_BNCE\,INFM\,SPAC\,wght.ttf") format("truetype");
-    src: url("../pages/fonts/ShantellSans-Italic-VariableFont_BNCE\,INFM\,SPAC\,wght.ttf") format("truetype");
-    src: url("../pages/fonts/static/ShantellSans-Medium.ttf") format("truetype");
+    src: url("../multimedia/fonts/ShantellSans-Italic-VariableFont_BNCE\,INFM\,SPAC\,wght.ttf") format("truetype");
+    font-weight: normal;
     font-style: normal;
-    font-weight: 400;
 }
-body{
+
+@font-face {
+    font-family: "Protesta";
+    src: url("../multimedia/fonts/ShantellSans-Italic-VariableFont_BNCE\,INFM\,SPAC\,wght.ttf") format("truetype");
+    font-weight: italic;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: "Protesta";
+    src: url("../multimedia/fonts/static/ShantellSans-Medium.ttf") format("truetype");
+    font-weight: 500;
+    font-style: normal;
+}
+
+/* Estilos generales del body */
+body {
     font-family: "Protesta";
     color: beige;
-    background-image: url("../pages/images/4.jpg") ;
+    background-image: url("../multimedia/images/4.jpg");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     position: relative;
 }
+
 ul {
     display: flex;
     justify-content: space-around;
     align-items: center;
     list-style-type: none;
 }
+
 li a {
     text-decoration: none;
     color: beige;
@@ -29,25 +46,49 @@ li a {
     padding: 6px;
     border-radius: 10px;
 }
+
 li a img {
-    
     width: 65px;
 }
-section{ 
+.text{
     display: flex;
+    justify-content: center;
+}
+section {
+    display: flex;
+    flex-wrap: wrap; /* Permite que los elementos se envuelvan a la siguiente línea */
     margin: 15px;
     padding: 6px;
+    align-content: center;
 }
+.contenido {
+    display: flex;
+    flex-direction: row;
+    justify-content: space-around;
+    border: 1px solid #ccc ;
+    margin: 15px;
+}
+/* Estilos para las tarjetas */
+.card {
+    display: flex;
+    flex-direction: column; /* Cambiado a columna para que el texto esté debajo de las imágenes */
+    align-content: center;
+    justify-content: space-around;
+   width: 350px;
+    margin: 10px; /* Ajusta el margen según sea necesario */
+}
+.card img{
+    
+   order: -1;
+}
+.contenido:hover .card {
+    opacity: 0;
+    transform: translateX(20px); /* Ejemplo de movimiento horizontal */
+    /* Puedes ajustar la propiedad transform según el tipo de movimiento que desees */
+}
+.contenido:hover{
+    background-image: url("https://i.blogs.es/57d329/guardiansofthegalaxycabecera/1366_2000.jpg");
+    opacity: 0.8;
+}
+/* Estilos para el contenedor de tarjetas */
 
-.container-tarjetas{ 
-    display: flex;
-    justify-content: space-around;
-}
-.card{ 
-    display: flex;
-    justify-content: space-around;
-}
-#div-card{ 
-    display: flex;
-    justify-content: space-around;
-}
