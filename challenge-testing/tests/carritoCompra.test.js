@@ -19,12 +19,6 @@ describe("CarritoCompra", () => {
     // verifica el primer elemento del array sea el de prueba
     expect(carrito.productos[0]).toEqual(producto);
   });
-  it("Deberia salir error al intentar agregar un producto", () => {
-    const agregarProductoInvalido = () => {
-      carrito.agregarProducto("producto no valido");
-    };
-    expect(() => agregarProductoInvalido()).toThrow();
-  });
 
   it("Deberia calcular el total correctamente", () => {
     const producto1 = { description: "Producto 1", quantity: 2, price: 10 };
@@ -49,5 +43,18 @@ describe("CarritoCompra", () => {
     const totalConDescuento = carrito.aplicarDescuento(descuentoPorcentaje);
     const descuento = (descuentoPorcentaje / 100) * totalSinDescuento;
     expect(totalConDescuento).toBe(totalSinDescuento - descuento);
+  });
+  describe("Mandar error al ingresar productos", () => {
+    it("Deberia salir error al intentar agregar un producto", () => {
+      const productoInvalido = {
+        description: "Producto no valido",
+        quantity: 0,
+        price: -5,
+      };
+
+      expect(() => carrito.agregarProducto(productoInvalido)).toThrowError(
+        TypeError
+      );
+    });
   });
 });

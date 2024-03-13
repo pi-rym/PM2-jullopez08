@@ -1,16 +1,20 @@
 const { createCard } = require("./createCard");
+const axios = require("axios");
 
-function loadCards() {
+async function loadCards() {
   const cardContainer = document.getElementById("div-card");
   cardContainer.classList.add("contenido");
 
-  $.get("https://students-api.2.us-1.fl0.io/movies", (films) => {
-    films.forEach((movie, index) => {
+  const { data } = await axios.get(
+    "https://students-api.up.railway.app/movies"
+  );
+  try {
+    data.forEach((movie, index) => {
       const card = createCard(movie, index);
       cardContainer.appendChild(card);
-      console.log("todas las tarjetas, soy una gueva ");
     });
-  });
+  } catch (error) {
+    console.log(error);
+  }
 }
-
 module.exports = { loadCards };

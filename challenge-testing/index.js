@@ -5,7 +5,20 @@ class CarritoCompra {
 
   agregarProducto(producto) {
     //no se define el objeto acà, en el test se pasa producto como objeto
-    this.productos.push(producto);
+    if (
+      producto &&
+      typeof producto === "object" &&
+      "quantity" in producto &&
+      "price" in producto
+    ) {
+      if (producto.quantity <= 0 && producto.price <= 0) {
+        throw new TypeError();
+      } else {
+        this.productos.push(producto);
+      }
+    } else {
+      throw new TypeError();
+    }
   }
 
   calcularTotal() {
