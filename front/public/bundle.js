@@ -25,7 +25,7 @@ eval("const cardContainer = document.getElementById(\"div-card\");\r\n\r\nfuncti
   \*****************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const { createCard } = __webpack_require__(/*! ./createCard */ \"./scripts/createCard.js\");\r\nconst axios = __webpack_require__(/*! axios */ \"./node_modules/axios/dist/browser/axios.cjs\");\r\n\r\nasync function loadCards() {\r\n  const cardContainer = document.getElementById(\"div-card\");\r\n  cardContainer.classList.add(\"contenido\");\r\n\r\n  const { data } = await axios.get(\r\n    \"https://students-api.up.railway.app/movies\"\r\n  );\r\n  try {\r\n    data.forEach((movie, index) => {\r\n      const card = createCard(movie, index);\r\n      cardContainer.appendChild(card);\r\n    });\r\n  } catch (error) {\r\n    console.log(error);\r\n  }\r\n}\r\nmodule.exports = { loadCards };\r\n\n\n//# sourceURL=webpack://front/./scripts/dataCard.js?");
+eval("const { createCard } = __webpack_require__(/*! ./createCard */ \"./scripts/createCard.js\");\r\nconst axios = __webpack_require__(/*! axios */ \"./node_modules/axios/dist/browser/axios.cjs\");\r\n\r\nasync function loadCards() {\r\n  const cardContainer = document.getElementById(\"div-card\");\r\n  cardContainer.classList.add(\"contenido\");\r\n\r\n  const { data } = await axios.get(\"http://localhost:3001/movies2\");\r\n  try {\r\n    data.forEach((movie, index) => {\r\n      const card = createCard(movie, index);\r\n      cardContainer.appendChild(card);\r\n    });\r\n  } catch (error) {\r\n    console.log(error);\r\n  }\r\n}\r\nmodule.exports = { loadCards };\r\n\n\n//# sourceURL=webpack://front/./scripts/dataCard.js?");
 
 /***/ }),
 
