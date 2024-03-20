@@ -29,13 +29,23 @@ eval("const { createCard } = __webpack_require__(/*! ./createCard */ \"./scripts
 
 /***/ }),
 
+/***/ "./scripts/enviarData.js":
+/*!*******************************!*\
+  !*** ./scripts/enviarData.js ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const axios = __webpack_require__(/*! axios */ \"./node_modules/axios/dist/browser/axios.cjs\");\r\n\r\nconst genres = [\r\n  \"Ation\",\r\n  \"Fantasy\",\r\n  \"Comedy\",\r\n  \"Drama\",\r\n  \"Sci-Fi\",\r\n  \"Terror\",\r\n  \"Adventure\",\r\n  \"Romance\",\r\n];\r\nconst title = document.getElementById(\"Inputitle\");\r\nconst year = document.getElementById(\"Inputyear\");\r\nconst director = document.getElementById(\"Inputdirector\");\r\nconst duraction = document.getElementById(\"Inputduraction\");\r\nconst option = document.getElementById(\"Listgenre\");\r\nconst rate = document.getElementById(\"Inputrate\");\r\nconst poster = document.getElementById(\"Inputimage\");\r\n\r\nfunction renderGenre() {\r\n  option.innerHTML = \"\";\r\n  for (const genre of genres) {\r\n    const input = document.createElement(\"input\");\r\n    const label = document.createElement(\"label\");\r\n\r\n    input.type = \"checkbox\";\r\n    input.id = genre;\r\n    input.name = \"genre[]\";\r\n    input.value = genre;\r\n\r\n    label.htmlFor = genre;\r\n    label.textContent = genre;\r\n\r\n    option.appendChild(input);\r\n    option.appendChild(label);\r\n  }\r\n  return option;\r\n}\r\nrenderGenre();\r\n\r\nfunction validarcheckboxes() {\r\n  const checkboxes = document.querySelectorAll('input [name=\"genre[]\"]');\r\n\r\n  for (const item of checkboxes) {\r\n    if (item.checked) {\r\n      item.classList.add(\"selected\");\r\n      return true;\r\n    }\r\n  }\r\n}\r\nvalidarcheckboxes();\r\nfunction validarForm(event) {\r\n  event.preventDefault();\r\n  const genres = validarcheckboxes();\r\n  if (\r\n    title.value.trim() === \"\" &&\r\n    year.value.trim() === \"\" &&\r\n    director.value.trim() === \"\" &&\r\n    duraction.value.trim() === \"\" &&\r\n    genre.value.trim() === \"\" &&\r\n    rate.value.trim() === \"\" &&\r\n    genres.every(Boolean)\r\n  ) {\r\n    return alert(\"Faltan campos\");\r\n  }\r\n  return alert(\"Pelicula enviada\");\r\n}\r\nfunction limpiarForm() {\r\n  title.value = \"\";\r\n  year.value = \"\";\r\n  director.value = \"\";\r\n  duraction.value = \"\";\r\n  rate.value = \"\";\r\n  poster.value = \"\";\r\n  const checkboxes = document.querySelectorAll('input[name=\"genre[]\"]');\r\n  for (const item of checkboxes) {\r\n    item.checked = false;\r\n    item.classList.remove(\"selected\");\r\n  }\r\n}\r\n\r\nconst btnEnviar = document.getElementById(\"btnEnviar\");\r\nconst limpiarbtn = document.getElementById(\"limpiarbtn\");\r\nlimpiarbtn.addEventListener(\"click\", limpiarForm);\r\nbtnEnviar.addEventListener(\"click\", validarForm);\r\n\r\nmodule.exports = validarForm;\r\n\r\n//const errores = [];\r\n\r\n//   if ) {\r\n//\r\n//\r\n\r\n//   if (errores.length > 0) {\r\n//     event.preventDefault();\r\n//     alert(errores.join(\"\\n\"));\r\n//   }\r\n// }\r\n\n\n//# sourceURL=webpack://front/./scripts/enviarData.js?");
+
+/***/ }),
+
 /***/ "./scripts/index.js":
 /*!**************************!*\
   !*** ./scripts/index.js ***!
   \**************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("// main.js\r\nconst { loadCards } = __webpack_require__(/*! ./dataCard */ \"./scripts/dataCard.js\");\r\n\r\nconst cardContainer = document.getElementById(\"div-card\");\r\nloadCards(cardContainer);\r\n\n\n//# sourceURL=webpack://front/./scripts/index.js?");
+eval("// main.js\r\nconst { loadCards } = __webpack_require__(/*! ./dataCard */ \"./scripts/dataCard.js\");\r\n\r\nconst validarForm = __webpack_require__(/*! ./enviarData */ \"./scripts/enviarData.js\");\r\n\r\nconst cardContainer = document.getElementById(\"div-card\");\r\nloadCards(cardContainer);\r\n\r\nconst botnEnviar = document.getElementById(\"btnEnviar\");\r\n\n\n//# sourceURL=webpack://front/./scripts/index.js?");
 
 /***/ }),
 
