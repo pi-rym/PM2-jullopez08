@@ -5,7 +5,7 @@ async function loadCards() {
   const cardContainer = document.getElementById("div-card");
   cardContainer.classList.add("contenido");
 
-  const { data } = await axios.get("http://localhost:3001/movies2");
+  const { data } = await axios.get("http://localhost:3000/movies");
   try {
     data.forEach((movie, index) => {
       const card = createCard(movie, index);

@@ -57,65 +57,48 @@
                     <div class="row">
 
                         <div class="col-md-6 offset-md-3">
-                            <form id="movieForm">
+                            <form action="" id="form">
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Titùlo</label>
-                                    <input type="text" class="form-control" id="Inputitle"
-                                        placeholder="Escriba aquì el titùlo de una pelicula..." required>
+                                    <label class="form-label">Title</label>
+                                    <input type="text" class="form-control" id="title" placeholder="una pelicula">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Año</label>
-                                    <input type="number" class="form-control" id="Inputyear"
-                                        placeholder="Escriba el año de publicacion " required max="2024" min="1900">
+                                    <label class="form-label">Year</label>
+                                    <input type="number" class="form-control" id="year" placeholder="2023">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Director</label>
-                                    <input type="text" class="form-control" id="Inputdirector"
-                                        placeholder="Escriba el nombre del director de la pelicula..." required>
+                                    <label class="form-label">Director</label>
+                                    <input type="text" class="form-control" id="director" placeholder="Algun Director">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Duraccion</label>
-                                    <input type="number" class="form-control" id="Inputduraction"
-                                        placeholder="Escriba aquì cuanto tiempo dura la pelicula" required>
+                                    <label class="form-label">Duration</label>
+                                    <input type="text" class="form-control" id="duration" placeholder="1h 62min">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleDataList" class="form-label">Genero</label>
-                                    <!-- <input class="form-control" list="datalistOptions" id="Listgenre" multiple
-                                        placeholder="Seleccione a que generos pertenece la pelicula..." required>
-                                    <datalist id="datalistOptions">
-                                        <option value="Action">
-                                        <option value="Adventure">
-                                        <option value="Fantasy">
-                                        <option value="Sci-Fi">
-                                        <option value="Comedy">
-                                        <option value="Drama">
-                                        <option value="Romance">
-                                        <option value="Terror">
-
-                                    </datalist> -->
-                                    <div id="Listgenre"></div>
+                                    <label class="form-label">Genre</label>
+                                    <input type="text" class="form-control" id="genre" placeholder="example: Action">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Ranking</label>
-                                    <input type="number" class="form-control" id="Inputrate"
-                                        placeholder="¿Cùal es el Ranking de la pelicula?" step="1.0" required>
+                                    <label class="form-label">Rate</label>
+                                    <input type="number" class="form-control" id="rate" placeholder="7.7">
                                 </div>
                                 <div class="mb-3">
-                                    <label for="exampleInputEmail1" class="form-label">Imagen</label>
-                                    <input type="text" class="form-control" id="Inputimage"
-                                        placeholder="Escriba aquì la URL de una imagen asociada a la pelicula" required>
+                                    <label class="form-label">Poster</label>
+                                    <input type="url" class="form-control" id="poster"
+                                        placeholder=" url de una imagen https://">
                                 </div>
                                 <div class="container text-center">
                                     <div class="row align-items-start">
                                         <div class="col">
-                                            <button type="submit" class="btn btn-primary" id="btnEnviar">Enviar</button>
+                                            <button type="submit" class="btn btn-primary">Enviar</button>
                                         </div>
                                         <div class="col">
-                                            <button type="submit" class="btn btn-primary"
-                                                id="limpiarbtn">limpiar</button>
+                                            <button type="button" id="btnlimpiar"
+                                                class="btn btn-primary">Limpiar</button>
                                         </div>
                                     </div>
                                 </div>
+
 
                             </form>
                         </div>

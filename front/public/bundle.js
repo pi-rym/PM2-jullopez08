@@ -25,7 +25,17 @@ eval("const cardContainer = document.getElementById(\"div-card\");\r\n\r\nfuncti
   \*****************************/
 /***/ ((module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("const { createCard } = __webpack_require__(/*! ./createCard */ \"./scripts/createCard.js\");\r\nconst axios = __webpack_require__(/*! axios */ \"./node_modules/axios/dist/browser/axios.cjs\");\r\n\r\nasync function loadCards() {\r\n  const cardContainer = document.getElementById(\"div-card\");\r\n  cardContainer.classList.add(\"contenido\");\r\n\r\n  const { data } = await axios.get(\"http://localhost:3000/movies\");\r\n  try {\r\n    data.forEach((movie, index) => {\r\n      const card = createCard(movie, index);\r\n      cardContainer.appendChild(card);\r\n    });\r\n  } catch (error) {\r\n    console.log(error);\r\n  }\r\n}\r\nmodule.exports = { loadCards };\r\n\n\n//# sourceURL=webpack://front/./scripts/dataCard.js?");
+eval("const { createCard } = __webpack_require__(/*! ./createCard */ \"./scripts/createCard.js\");\r\nconst axios = __webpack_require__(/*! axios */ \"./node_modules/axios/dist/browser/axios.cjs\");\r\n\r\nasync function loadCards() {\r\n  const cardContainer = document.getElementById(\"div-card\");\r\n  cardContainer.classList.add(\"contenido\");\r\n\r\n  const { data } = await axios.get(\"http://localhost:3001/movies2\");\r\n  try {\r\n    data.forEach((movie, index) => {\r\n      const card = createCard(movie, index);\r\n      cardContainer.appendChild(card);\r\n    });\r\n  } catch (error) {\r\n    console.log(error);\r\n  }\r\n}\r\nmodule.exports = { loadCards };\r\n\n\n//# sourceURL=webpack://front/./scripts/dataCard.js?");
+
+/***/ }),
+
+/***/ "./scripts/enviarData.js":
+/*!*******************************!*\
+  !*** ./scripts/enviarData.js ***!
+  \*******************************/
+/***/ ((module, __unused_webpack_exports, __webpack_require__) => {
+
+eval("const axios = __webpack_require__(/*! axios */ \"./node_modules/axios/dist/browser/axios.cjs\");\r\n\r\nconst genres = [\r\n  \"Ation\",\r\n  \"Fantasy\",\r\n  \"Comedy\",\r\n  \"Drama\",\r\n  \"Sci-Fi\",\r\n  \"Terror\",\r\n  \"Adventure\",\r\n  \"Romance\",\r\n];\r\nconst title = document.getElementById(\"Inputitle\");\r\nconst year = document.getElementById(\"Inputyear\");\r\nconst director = document.getElementById(\"Inputdirector\");\r\nconst duraction = document.getElementById(\"Inputduraction\");\r\nconst option = document.getElementById(\"Listgenre\");\r\nconst rate = document.getElementById(\"Inputrate\");\r\nconst imagen = document.getElementById(\"Inputimage\");\r\n\r\nfunction renderGenre() {\r\n  option.innerHTML = \"\";\r\n  for (const genre of genres) {\r\n    const input = document.createElement(\"input\");\r\n    const label = document.createElement(\"label\");\r\n\r\n    input.type = \"checkbox\";\r\n    input.id = genre;\r\n    input.name = \"genre[]\";\r\n    input.value = genre;\r\n\r\n    label.htmlFor = genre;\r\n    label.textContent = genre;\r\n\r\n    option.appendChild(input);\r\n    option.appendChild(label);\r\n  }\r\n  return option;\r\n}\r\nrenderGenre();\r\nfunction validarForm() {\r\n  let movieImput = {};\r\n\r\n  movieImput.title = title.value;\r\n  movieImput.year = year.value;\r\n  movieImput.director = director.value;\r\n  movieImput.duraction = duraction.value;\r\n  movieImput.option = option.value;\r\n  movieImput.rate = rate.value;\r\n  movieImput.imagen = imagen.value;\r\n\r\n  if (\r\n    title.value.trim() === \"\" &&\r\n    year.value.trim() === \"\" &&\r\n    director.value.trim() === \"\" &&\r\n    duraction.value.trim() === \"\" &&\r\n    genre.value.trim() === \"\" &&\r\n    rate.value.trim() === \"\" &&\r\n    imagen.value.trim() === \"\"\r\n  ) {\r\n    alert(\"los campos no puede estar vacío\");\r\n  } else {\r\n    axios.post(\"http://localhost:3000/movies\", movieImput);\r\n  }\r\n}\r\n\r\nformulario.addEventListener(\"submit\", validarForm);\r\nalert`${formulario} hola`;\r\n\r\nmodule.exports = validarForm;\r\n\r\n//const errores = [];\r\n\r\n//   if (title.value.trim() === \"\") {\r\n//     errores.push(\"Titùlo no puede estar vacío\");\r\n//   }\r\n//   if (year.value.trim() === \"\") {\r\n//     errores.push(\"Año  no puede estar vacío\");\r\n//   }\r\n//   if (director.value.trim() === \"\") {\r\n//     errores.push(\"Director no puede estar vacío\");\r\n//   }\r\n//   if (duraction.value.trim() === \"\") {\r\n//     errores.push(\"Duraccion no puede estar vacío\");\r\n//   }\r\n//   if (genre.value.trim() === \"\") {\r\n//     errores.push(\"Genero no puede estar vacío\");\r\n//   }\r\n//   if (rate.value.trim() === \"\") {\r\n//     errores.push(\"Ranking no puede estar vacío\");\r\n//   }\r\n\r\n//   if (imagen.value.trim() === \"\") {\r\n//     errores.push(\"imagen no puede estar vacío\");\r\n//   }\r\n\r\n//   if (errores.length > 0) {\r\n//     event.preventDefault();\r\n//     alert(errores.join(\"\\n\"));\r\n//   }\r\n// }\r\n\n\n//# sourceURL=webpack://front/./scripts/enviarData.js?");
 
 /***/ }),
 
@@ -35,7 +45,17 @@ eval("const { createCard } = __webpack_require__(/*! ./createCard */ \"./scripts
   \**************************/
 /***/ ((__unused_webpack_module, __unused_webpack_exports, __webpack_require__) => {
 
-eval("// main.js\r\nconst { loadCards } = __webpack_require__(/*! ./dataCard */ \"./scripts/dataCard.js\");\r\n\r\n//const cardContainer = document.getElementById(\"div-card\");\r\nloadCards();\r\n\n\n//# sourceURL=webpack://front/./scripts/index.js?");
+eval("// main.js\r\nconst { loadCards } = __webpack_require__(/*! ./dataCard */ \"./scripts/dataCard.js\");\r\nconst limpiarForm = __webpack_require__(/*! ./renderForm */ \"./scripts/renderForm.js\");\r\nconst validarForm = __webpack_require__(/*! ./enviarData */ \"./scripts/enviarData.js\");\r\n\r\nconst cardContainer = document.getElementById(\"div-card\");\r\nloadCards(cardContainer);\r\n\r\nconst botnEnviar = document.getElementById(\"btnEnviar\");\r\nbotnEnviar.addEventListener(\"submit\", validarForm);\r\n\r\ndocument.addEventListener(\"DOMContentLoaded\", limpiarForm);\r\n\n\n//# sourceURL=webpack://front/./scripts/index.js?");
+
+/***/ }),
+
+/***/ "./scripts/renderForm.js":
+/*!*******************************!*\
+  !*** ./scripts/renderForm.js ***!
+  \*******************************/
+/***/ ((module) => {
+
+eval("function limpiarForm() {\r\n  const formulario = document.getElementById(\"movieForm\");\r\n  const limpiarBtn = document.getElementById(\"limpiarBtn\");\r\n\r\n  limpiarBtn.addEventListener(\"click\", function (event) {\r\n    event.preventDefault();\r\n    formulario.reset();\r\n  });\r\n}\r\n\r\nmodule.exports = limpiarForm;\r\n\n\n//# sourceURL=webpack://front/./scripts/renderForm.js?");
 
 /***/ }),
 

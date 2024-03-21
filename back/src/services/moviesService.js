@@ -1,11 +1,5 @@
-const Movie = require("../models/moviesModels");
+const { Movie } = require("../models/moviesModels");
 const axios = require("axios");
-
-const buscar = async () => {
-  const movieV = await Movie.find();
-  console.log(movieV);
-  return movieV;
-};
 
 class MoviesClase {
   constructor(title, year, director, duration, genre, rate, poster) {
@@ -32,7 +26,7 @@ const movies = async () => {
     //const url = "https://students-api.up.railway.app/movies";
     // const { data } = await axios.get(url);
 
-    const data = await buscar();
+    const data = await Movie.find();
     const dataMovies = data.map(
       (element) =>
         new MoviesClase(

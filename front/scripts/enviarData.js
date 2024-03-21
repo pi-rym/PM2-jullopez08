@@ -1,100 +1,66 @@
 const axios = require("axios");
 
-const genres = [
-  "Ation",
-  "Fantasy",
-  "Comedy",
-  "Drama",
-  "Sci-Fi",
-  "Terror",
-  "Adventure",
-  "Romance",
-];
-const title = document.getElementById("Inputitle");
-const year = document.getElementById("Inputyear");
-const director = document.getElementById("Inputdirector");
-const duraction = document.getElementById("Inputduraction");
-const option = document.getElementById("Listgenre");
-const rate = document.getElementById("Inputrate");
-const poster = document.getElementById("Inputimage");
-
-function renderGenre() {
-  option.innerHTML = "";
-  for (const genre of genres) {
-    const input = document.createElement("input");
-    const label = document.createElement("label");
-
-    input.type = "checkbox";
-    input.id = genre;
-    input.name = "genre[]";
-    input.value = genre;
-
-    label.htmlFor = genre;
-    label.textContent = genre;
-
-    option.appendChild(input);
-    option.appendChild(label);
-  }
-  return option;
-}
-renderGenre();
-
-function validarcheckboxes() {
-  const checkboxes = document.querySelectorAll('input [name="genre[]"]');
-
-  for (const item of checkboxes) {
-    if (item.checked) {
-      item.classList.add("selected");
-      return true;
-    }
-  }
-}
-validarcheckboxes();
-function validarForm(event) {
-  event.preventDefault();
-  const genres = validarcheckboxes();
-  if (
-    title.value.trim() === "" &&
-    year.value.trim() === "" &&
-    director.value.trim() === "" &&
-    duraction.value.trim() === "" &&
-    genre.value.trim() === "" &&
-    rate.value.trim() === "" &&
-    genres.every(Boolean)
-  ) {
-    return alert("Faltan campos");
-  }
-  return alert("Pelicula enviada");
-}
 function limpiarForm() {
-  title.value = "";
-  year.value = "";
-  director.value = "";
-  duraction.value = "";
-  rate.value = "";
-  poster.value = "";
-  const checkboxes = document.querySelectorAll('input[name="genre[]"]');
-  for (const item of checkboxes) {
-    item.checked = false;
-    item.classList.remove("selected");
+  // Seleccionar todos los inputs del formulario
+  const inputs = document.querySelectorAll("input");
+
+  // Iterar sobre los inputs y vaciar sus valores
+  inputs.forEach((input) => {
+    input.value = "";
+  });
+}
+
+async function enviarForm(event) {
+  try {
+    // Prevenir el envío del formulario
+    event.preventDefault();
+
+    // Seleccionar todos los inputs del formulario
+    const inputs = document.querySelectorAll("input");
+
+    // Validar que todos los campos estén completos
+    let form = true;
+    inputs.forEach((input) => {
+      if (!input.value) {
+        form = false;
+      }
+    });
+
+    // Si el formulario está completo, enviar los datos al servidor
+    if (form) {
+      const title = document.getElementById("title").value;
+      const year = document.getElementById("year").value;
+      const director = document.getElementById("director").value;
+      const duration = document.getElementById("duration").value;
+      const genre = document.getElementById("genre").value;
+      const rate = document.getElementById("rate").value;
+      const poster = document.getElementById("poster").value;
+
+      // Enviar los datos del formulario al servidor utilizando Axios
+      const response = await axios.post("http://localhost:3000/movies", {
+        title,
+        year,
+        director,
+        duration,
+        genre,
+        rate,
+        poster,
+      });
+
+      alert("La película se ha guardado");
+    } else {
+      alert("formulario incompleto. ");
+    }
+  } catch (error) {
+    console.error("Error:", error);
+    alert("la pelicula no se guardo, inténtalo de nuevo.");
   }
 }
 
-const btnEnviar = document.getElementById("btnEnviar");
-const limpiarbtn = document.getElementById("limpiarbtn");
-limpiarbtn.addEventListener("click", limpiarForm);
-btnEnviar.addEventListener("click", validarForm);
+document.addEventListener("DOMContentLoaded", function () {
+  const clearButton = document.getElementById("btnlimpiar");
+  clearButton.addEventListener("click", limpiarForm);
 
-module.exports = validarForm;
-
-//const errores = [];
-
-//   if ) {
-//
-//
-
-//   if (errores.length > 0) {
-//     event.preventDefault();
-//     alert(errores.join("\n"));
-//   }
-// }
+  const form = document.getElementById("form");
+  form.addEventListener("submit", enviarForm);
+});
